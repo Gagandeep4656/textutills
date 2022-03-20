@@ -8,7 +8,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Link,
 } from "react-router-dom";
 
 
@@ -31,7 +30,7 @@ function App() {
         setMode('dark');
         document.body.style.backgroundColor = '#042743';
         showAlert("Dark mode has been enabled", "success");
-        document.title = "Textutils - Dark mode"
+        // document.title = "Textutils - Dark mode"
         // setInterval(() => {
         //   document.title = "Textutils is Amazing"
         // }, 2000);
@@ -43,22 +42,20 @@ function App() {
         setMode('light');
         document.body.style.backgroundColor = 'white';
         showAlert("Light mode has been enabled", "success");
-        document.title ="Textutils - Light mode"
+        // document.title ="Textutils - Light mode"
       }
 
   }
   return (
     <>
      <BrowserRouter>
-    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} aboutText="About TextUtils"/>
+    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} aboutText="About"/>
     <Alert alert={alert}/>
     <div className="container my-3">
     <Routes>
-        <Route exact path="/about" element={<About />} />
-        <Route exact path="/" element={ <TextForm showAlert={showAlert} heading="Enter text to analyze below" mode={mode}/> } />
+        <Route exact path="/about" element={<About mode={mode} />} />
+        <Route  path="/" element={ <TextForm showAlert={showAlert} heading="Try TextUtils - Word counter , Character counter, Remove extra spaces" mode={mode}/> } />
       </Routes>
-     
-    {/* <About/>  */}
     </div>
     </BrowserRouter>
     </> 
